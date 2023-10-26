@@ -37,7 +37,6 @@ public class GooglePage extends Base {
     @PostConstruct
     private void init(){
        wait= new WebDriverWait(driverProvider.getInstance(), Duration.ofSeconds(60));
-        System.out.println(scenarioContext.getScenario().getName());
 
     }
     public void goTo(){
@@ -51,18 +50,12 @@ public class GooglePage extends Base {
                 .filter(e -> e.isDisplayed() && e.isEnabled())
                 .findFirst()
                 .ifPresent(WebElement::click);
-        final byte[] screenshot = ((TakesScreenshot) driverProvider.getInstance()).getScreenshotAs(OutputType.BYTES);
-        scenarioContext.getScenario().attach(screenshot, "image/png", scenarioContext.getScenario().getName());
     }
     public int getCount(){
-        final byte[] screenshot = ((TakesScreenshot) driverProvider.getInstance()).getScreenshotAs(OutputType.BYTES);
-        scenarioContext.getScenario().attach(screenshot, "image/png", scenarioContext.getScenario().getName());
         return this.results.size();
 
     }
     public boolean isAt() {
-        final byte[] screenshot = ((TakesScreenshot) driverProvider.getInstance()).getScreenshotAs(OutputType.BYTES);
-        scenarioContext.getScenario().attach(screenshot, "image/png", scenarioContext.getScenario().getName());
         return this.wait.until((d) -> this.searchBox.isDisplayed());
     }
 
