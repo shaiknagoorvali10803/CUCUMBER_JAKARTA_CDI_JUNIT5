@@ -1,5 +1,4 @@
 package com.csx;
-
 import io.cucumber.core.backend.ObjectFactory;
 import jakarta.enterprise.context.spi.CreationalContext;
 import jakarta.enterprise.event.Observes;
@@ -8,7 +7,6 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.*;
 import org.apiguardian.api.API;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

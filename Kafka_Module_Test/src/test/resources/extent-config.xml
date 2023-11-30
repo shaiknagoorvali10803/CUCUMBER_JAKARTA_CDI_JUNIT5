@@ -1,44 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <extentreports>
 	<configuration>
+
 		<!-- report theme -->
+		<!-- STANDARD, DARK -->
+		<theme>STANDARD</theme>
 
-		<!-- standard, dark -->
-
-		<theme>dark</theme>
 		<!-- document encoding -->
-
 		<!-- defaults to UTF-8 -->
-
 		<encoding>UTF-8</encoding>
+
 		<!-- protocol for script and stylesheets -->
-
 		<!-- defaults to https -->
+		<!-- HTTP, HTTPS -->
+		<protocol>https</protocol>
 
-		<protocol>http</protocol>
+		<!-- offline report -->
+		<timelineEnabled>true</timelineEnabled>
+
+		<!-- offline report -->
+		<enableOfflineMode>false</enableOfflineMode>
+
+		<!-- use thumbnails for base64 images -->
+		<!-- this may slowdown viewing tests -->
+		<thumbnailForBase64>true</thumbnailForBase64>
+
 		<!-- title of the document -->
-		<documentTitle>Extent</documentTitle>
-		<!-- report name - displayed at top-nav -->
+		<documentTitle>MEL Automation Report</documentTitle>
 
-		<reportName>Grasshopper Report</reportName>
-		<!-- location of charts in the test view -->
+		<reportName>MEL Automation Report</reportName>
 
-		<!-- top, bottom -->
-
-		<testViewChartLocation>bottom</testViewChartLocation>
+		<!-- timestamp format -->
+		<timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
 		<!-- custom javascript -->
-
 		<scripts>
-
-<![CDATA[
-$(document).ready(function() {
-});
-]]>
+			<![CDATA[
+                $(document).ready(function() {
+                    $('.logo-container.grey darken-2').css('display','block');
+                });
+            ]]>
 		</scripts>
+
 		<!-- custom styles -->
+		<scripts> <![CDATA[$(document).ready(function() {$('.dashboard-view').click();});$('.col.s12:nth-child(2) .card-panel.nm-v').hide();$('.col.s2:nth-child(2)').hide();$('.col.s12:nth-child(1)').css('width', '100%');$('.row .col.s2').css('width', '25%');]]> </scripts>
+
 		<styles>
-<![CDATA[
-]]>
+
 		</styles>
+
 	</configuration>
 </extentreports>

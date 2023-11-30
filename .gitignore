@@ -40,3 +40,6 @@ build/
 /Kafka_Module_Test/ExtentReports/
 /RestAssured_Module_Test/ExtentReports/
 /Selenium_Module_Test/ExtentReports/
+/Selenium_Module_Test/REPORTS/
+/Kafka_Module_Test/REPORTS/
+/RestAssured_Module_Test/REPORTS/
