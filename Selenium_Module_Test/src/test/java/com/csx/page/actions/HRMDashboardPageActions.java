@@ -1,11 +1,11 @@
 package com.csx.page.actions;
-
-import com.csx.test.util.WebDriverProvider;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import com.csx.test.util.WebDriverProvider;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;

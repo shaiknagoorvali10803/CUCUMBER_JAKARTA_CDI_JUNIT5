@@ -1,6 +1,7 @@
 package com.csx.test.util;
 
 import com.csx.utils.AppConfigHolder;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Dimension;
@@ -34,7 +35,7 @@ public class SeleniumUtil {
     public static final int DRIVER_WAIT_TIME_IN_SECS = 30;
     private static int maxSyncTime = 60;
 
-    private static final String setApplicationURL(String environment) {
+    public static final String setApplicationURL(String environment) {
         String url = "";
         if ((environment == null ? AppConfigHolder.getInstance().environment() : environment).equalsIgnoreCase("QA")) {
             url = AppConfigHolder.getInstance().applicationMELQAURL();
@@ -44,6 +45,18 @@ public class SeleniumUtil {
             url = AppConfigHolder.getInstance().applicationMELStageURL();
         }
         return url;
+    }
+
+    public static final String setHeadlessProperty(String headlessMode) {
+        String isHeadLessSel = null;
+        isHeadLessSel= headlessMode == null ? AppConfigHolder.getInstance().headlessRun() : headlessMode;
+        return isHeadLessSel;
+    }
+
+    public static final String setRemoteExecution(String remoteRunMode) {
+        String isRemoteExecutionSel = null;
+        isRemoteExecutionSel= remoteRunMode == null ? AppConfigHolder.getInstance().remoteExecution() : remoteRunMode;
+        return isRemoteExecutionSel;
     }
 
     /**
