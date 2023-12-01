@@ -43,3 +43,4 @@ build/
 /Selenium_Module_Test/REPORTS/
 /Kafka_Module_Test/REPORTS/
 /RestAssured_Module_Test/REPORTS/
+/Selenium_Module_Test/*.avi
