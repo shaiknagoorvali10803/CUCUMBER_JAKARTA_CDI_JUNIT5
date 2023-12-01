@@ -1,16 +1,18 @@
 package com.csx.test.util;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import io.cucumber.java.Scenario;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -19,7 +21,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Singleton
+@ApplicationScoped
 public class ScreenshotUtils {
     public static Logger logger = LoggerFactory.getLogger(ScreenshotUtils.class);
 
@@ -30,7 +32,7 @@ public class ScreenshotUtils {
         scenario.attach(((TakesScreenshot) driverProvider.getInstance()).getScreenshotAs(OutputType.BYTES), "image/png", screenshotTitle);
      }
     public void insertScreenshot(String screenshotTitle){
-        //ExtentCucumberAdapter.getCurrentStep().log(Status.PASS, MarkupHelper.createLabel(screenshotTitle, ExtentColor.GREEN),MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenshotBase64()).build());
+        ExtentCucumberAdapter.getCurrentStep().log(Status.PASS, MarkupHelper.createLabel(screenshotTitle, ExtentColor.GREEN), MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenshotBase64()).build());
     }
     public void addLog(String text){
         ExtentCucumberAdapter.getCurrentStep().log(Status.INFO, text);

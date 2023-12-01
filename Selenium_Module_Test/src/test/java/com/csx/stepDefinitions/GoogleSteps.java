@@ -34,7 +34,7 @@ public class GoogleSteps {
 
     @PostConstruct
     private void init() {
-        PageFactory.initElements(this.driverProvider.getInstance(), this);
+        PageFactory.initElements(this.driverProvider.getInstance(), this.googlePage);
         scenario = scenarioContext.getScenario();
     }
 

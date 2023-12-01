@@ -3,6 +3,7 @@ package com.csx.stepDefinitions;
 
 import com.csx.page.actions.GooglePageActions;
 import com.csx.page.actions.VisaPageActions;
+import com.csx.test.util.ScreenshotUtils;
 import com.csx.test.util.WebDriverProvider;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
@@ -12,6 +13,7 @@ import io.cucumber.java.en.When;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.support.PageFactory;
 
@@ -23,7 +25,7 @@ public class VisaSteps {
     WebDriverProvider driverProvider;
 
     @Inject
-    VisaPageActions visaRegistrationPage;
+    VisaPageActions registrationPage;
 
     @Inject
     GooglePageActions googlePage;
@@ -31,6 +33,9 @@ public class VisaSteps {
     ScenarioContext scenarioContext;
 
     Scenario scenario;
+    @Inject
+    ScreenshotUtils screenshotUtils;
+
 
     @PostConstruct
     private void init() {
@@ -39,44 +44,48 @@ public class VisaSteps {
     }
 
     @Given("I am on VISA registration form")
-    public void launchSite() {
+    public void launchSite() throws InterruptedException {
         this.driverProvider.getInstance().navigate().to("https://vins-udemy.s3.amazonaws.com/sb/visa/udemy-visa.html");
+        screenshotUtils.insertScreenshot("screenshot");
+        //Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     @When("I select my from country {string} and to country {string}")
     public void selectCountry(String from, String to) {
-        this.visaRegistrationPage.setCountryFromAndTo(from, to);
+        this.registrationPage.setCountryFromAndTo(from, to);
     }
 
     @And("I enter my dob as {string}")
     public void enterDob(String dob) {
-        this.visaRegistrationPage.setBirthDate(LocalDate.parse(dob));
+        this.registrationPage.setBirthDate(LocalDate.parse(dob));
     }
 
     @And("I enter my name as {string} and {string}")
     public void enterNames(String fn, String ln) {
-        this.visaRegistrationPage.setNames(fn, ln);
+        this.registrationPage.setNames(fn, ln);
     }
 
     @And("I enter my contact details as {string} and {string}")
     public void enterContactDetails(String email, String phone) {
-        this.visaRegistrationPage.setContactDetails(email, phone);
+        this.registrationPage.setContactDetails(email, phone);
     }
 
     @And("I enter the comment {string}")
     public void enterComment(String comment) {
-        this.visaRegistrationPage.setComments(comment);
+        this.registrationPage.setComments(comment);
     }
 
     @And("I submit the form")
-    public void submit() {
-        this.visaRegistrationPage.submit();
+    public void submit() throws InterruptedException {
+        screenshotUtils.insertScreenshot1(scenario,"screenshot");
+        this.registrationPage.submit();
     }
 
     @Then("I should see get the confirmation number")
     public void verifyConfirmationNumber() throws InterruptedException {
-        boolean isEmpty = StringUtils.isEmpty(this.visaRegistrationPage.getConfirmationNumber().trim());
-        Assertions.assertFalse(isEmpty);
+        boolean isEmpty = StringUtils.isEmpty(this.registrationPage.getConfirmationNumber().trim());
+        screenshotUtils.insertScreenshot1(scenario,"screenshot");
+        Assert.assertFalse(isEmpty);
         Thread.sleep(2000);
     }
 
