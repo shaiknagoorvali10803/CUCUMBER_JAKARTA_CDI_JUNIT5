@@ -12,7 +12,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @IncludeEngines("cucumber")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.csx.stepDefinitions")
 @ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "classpath:features")
-@ConfigurationParameter(key= FILTER_TAGS_PROPERTY_NAME,value = "@extent")
+@ConfigurationParameter(key= FILTER_TAGS_PROPERTY_NAME,value = "")
 @ConfigurationParameter(key= EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false")
 @ConfigurationParameter(key= PARALLEL_EXECUTION_ENABLED_PROPERTY_NAME,value = "true")
 

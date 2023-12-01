@@ -48,6 +48,10 @@ public interface AppConfig extends Config, Mutable {
 
   @Key("googleurl")
   String googleurl();
+  @Key("remoteExecution")
+  String remoteExecution();
+  @Key("headlessRun")
+  String headlessRun();
 
 
 }

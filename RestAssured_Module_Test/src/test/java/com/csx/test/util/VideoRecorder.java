@@ -18,7 +18,7 @@ public class VideoRecorder {
 
 	private static ScreenRecorder screenRecorder;
 	
-	public void startRecording() throws Exception {
+	public static void startRecording() throws Exception {
 		File file = new File(System.getProperty("user.dir"));
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,7 +41,7 @@ public class VideoRecorder {
 
 	}
 
-	public void stopRecording() throws Exception {
+	public static void stopRecording() throws Exception {
 		screenRecorder.stop();
 	}
 

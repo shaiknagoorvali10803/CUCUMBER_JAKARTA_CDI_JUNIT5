@@ -14,11 +14,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +28,8 @@ import java.util.Optional;
 @ApplicationScoped
 public class WebDriverProvider {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverProvider.class);
-    private static final String BUILD_TOOL_RUN = "buildToolRun";
+    private static final String BUILD_TOOL_RUN = SeleniumUtil.setRemoteExecution(System.getProperty("buildToolRun"));
+    private static final String HEADLESS = SeleniumUtil.setHeadlessProperty(System.getProperty("headless"));
 
     //private static final String SELENIUM_GRID_URL = "http://selenium.apps.ocpjaxd003.csx.com/";
 
@@ -43,9 +41,10 @@ public class WebDriverProvider {
     private WebDriver instance;
     private BrowserType instanceBrowserType;
 
+
     @PostConstruct
     public void setUpBrowsers() {
-        if (!BooleanUtils.toBoolean(System.getProperty(BUILD_TOOL_RUN))) {
+        if (!BooleanUtils.toBoolean(System.getProperty("buildToolRun"))) {
             //ChromeDriverManager.chromedriver().setup();
             // InternetExplorerDriverManager.iedriver().setup();
             // FirefoxDriverManager.firefoxdriver().setup();
@@ -151,7 +150,7 @@ public class WebDriverProvider {
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", downloadFilepath);
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
-        if (BooleanUtils.toBoolean(headless)) {
+        if (BooleanUtils.toBoolean(HEADLESS)||BooleanUtils.toBoolean(headless)) {
             chromeOptions.addArguments("--headless");
         }
         if (BooleanUtils.toBoolean(BUILD_TOOL_RUN)) {
@@ -183,7 +182,7 @@ public class WebDriverProvider {
         edgePrefs.put("profile.default_content_settings.popups", 0);
         edgePrefs.put("download.default_directory", downloadFilepath);
         edgeOptions.setExperimentalOption("prefs", edgePrefs);
-        if (BooleanUtils.toBoolean(headless)) {
+        if (BooleanUtils.toBoolean(HEADLESS)||BooleanUtils.toBoolean(headless)) {
             edgeOptions.addArguments("--headless");
         }
         if (BooleanUtils.toBoolean(BUILD_TOOL_RUN)) {
@@ -218,7 +217,7 @@ public class WebDriverProvider {
         firefoxOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         firefoxOptions.addArguments("start-maximized");
         firefoxOptions.addArguments("--private");
-        if (BooleanUtils.toBoolean(headless)) {
+        if (BooleanUtils.toBoolean(HEADLESS)||BooleanUtils.toBoolean(headless)) {
             firefoxOptions.addArguments("--headless");
         }
         if (BooleanUtils.toBoolean(BUILD_TOOL_RUN)) {
