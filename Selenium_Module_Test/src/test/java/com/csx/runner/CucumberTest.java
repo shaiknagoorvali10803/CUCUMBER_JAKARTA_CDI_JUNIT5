@@ -15,6 +15,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @ConfigurationParameter(key= FILTER_TAGS_PROPERTY_NAME,value = "")
 @ConfigurationParameter(key= EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false")
 @ConfigurationParameter(key= PARALLEL_EXECUTION_ENABLED_PROPERTY_NAME,value = "true")
+@ConfigurationParameter(key= EXECUTION_MODE_FEATURE_PROPERTY_NAME,value = "same_thread")
 
 public class CucumberTest {
 }

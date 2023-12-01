@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-@ApplicationScoped
+@Singleton
 public class HomePageObjects {
 
     @FindBy(name = "q")

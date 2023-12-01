@@ -8,9 +8,10 @@ import io.cucumber.java.en.When;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-@ApplicationScoped
+@Singleton
 public class HomeSteps {
     @Inject
     private HomePageActions homePage;

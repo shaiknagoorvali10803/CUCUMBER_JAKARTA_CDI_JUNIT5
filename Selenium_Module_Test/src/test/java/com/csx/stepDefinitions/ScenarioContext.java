@@ -2,10 +2,11 @@ package com.csx.stepDefinitions;
 
 import io.cucumber.java.Scenario;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Singleton;
 
 import java.util.HashMap;
 import java.util.Map;
-@ApplicationScoped
+@Singleton
 public class ScenarioContext {
 	private Scenario scenario;
 	private Map<String, Object> contextData;

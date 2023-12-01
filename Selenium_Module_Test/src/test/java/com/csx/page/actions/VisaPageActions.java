@@ -7,6 +7,7 @@ import com.csx.test.util.WebDriverProvider;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,15 +16,12 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@ApplicationScoped
+@Singleton
 public class VisaPageActions {
     @Inject
     ScreenshotUtils screenshotUtils;
     @Inject
     WebDriverProvider driverProvider;
-
-    @Inject
-    ScenarioContext scenarioContext;
 
     @Inject
     VisaPageObjects pageObjects;
@@ -50,7 +48,7 @@ public class VisaPageActions {
         new Select(pageObjects.year).selectByVisibleText(String.valueOf(localDate.getYear()));
         new Select(pageObjects.day).selectByVisibleText(String.valueOf(localDate.getDayOfMonth()));
         new Select(pageObjects.month).selectByValue(localDate.getMonth().toString());
-        screenshotUtils.insertScreenshot1(scenarioContext.getScenario(), "screenshot");
+        screenshotUtils.insertScreenshot("screenshot");
     }
 
     public void setContactDetails(String email, String phone) {

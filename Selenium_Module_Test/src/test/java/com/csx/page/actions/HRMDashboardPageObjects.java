@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Singleton;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-@ApplicationScoped
+@Singleton
 public class HRMDashboardPageObjects {
     @FindBy(xpath="//h6[normalize-space()='Dashboard']")
     WebElement dashboard_menu;

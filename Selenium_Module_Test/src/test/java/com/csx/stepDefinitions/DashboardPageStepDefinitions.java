@@ -15,7 +15,6 @@ public class DashboardPageStepDefinitions {
   
   @Inject
   private WebDriverProvider driverProvider;
-
   @Inject
   HRMLoginPageActions login;
   @Inject

@@ -52,7 +52,7 @@ public class GoogleSteps {
     public void clickSearch() throws IOException {
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(4));
         Assertions.assertTrue(this.googlePage.isAt());
-        screenshotUtils.insertScreenshot1(scenario, "getting Count");
+        screenshotUtils.insertScreenshot("screenshot");
 
     }
 
@@ -60,11 +60,11 @@ public class GoogleSteps {
     public void verifyResults(int count) throws InterruptedException, IOException {
         Assertions.assertTrue(this.googlePage.getCount() >= count);
         SeleniumUtil.clickElementByJS(driverProvider.getInstance(), "//a[normalize-space()='Images']");
-        screenshotUtils.insertScreenshot1(scenario, "images");
+        screenshotUtils.insertScreenshot("screenshot");
         Thread.sleep(3000);
         System.out.println("Current Thread Number " + Thread.currentThread().getThreadGroup() + "thread number" + Thread.currentThread().getId());
         driverProvider.getInstance().findElement(By.xpath("//a[normalize-space()='Videos']")).click();
-        screenshotUtils.insertScreenshot1(scenario, "videos");
+        screenshotUtils.insertScreenshot("screenshot");
         Thread.sleep(3000);
     }
 }

@@ -77,14 +77,14 @@ public class VisaSteps {
 
     @And("I submit the form")
     public void submit() throws InterruptedException {
-        screenshotUtils.insertScreenshot1(scenario,"screenshot");
+        screenshotUtils.insertScreenshot("screenshot");
         this.registrationPage.submit();
     }
 
     @Then("I should see get the confirmation number")
     public void verifyConfirmationNumber() throws InterruptedException {
         boolean isEmpty = StringUtils.isEmpty(this.registrationPage.getConfirmationNumber().trim());
-        screenshotUtils.insertScreenshot1(scenario,"screenshot");
+        screenshotUtils.insertScreenshot("screenshot");
         Assert.assertFalse(isEmpty);
         Thread.sleep(2000);
     }

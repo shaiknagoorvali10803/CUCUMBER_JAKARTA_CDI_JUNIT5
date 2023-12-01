@@ -3,6 +3,7 @@ package com.csx.test.util;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Singleton;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.PageLoadStrategy;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 
-@ApplicationScoped
+@Singleton
 public class WebDriverProvider {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverProvider.class);
     private static final String BUILD_TOOL_RUN = SeleniumUtil.setRemoteExecution(System.getProperty("buildToolRun"));

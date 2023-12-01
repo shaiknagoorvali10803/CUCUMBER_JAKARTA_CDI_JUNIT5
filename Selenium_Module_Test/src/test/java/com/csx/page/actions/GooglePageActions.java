@@ -4,9 +4,12 @@ import com.csx.stepDefinitions.ScenarioContext;
 import com.csx.test.util.ScreenshotUtils;
 import com.csx.utils.AppConfigHolder;
 import com.csx.test.util.WebDriverProvider;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -14,19 +17,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-@ApplicationScoped
+@Singleton
 public class GooglePageActions {
     @Inject
     WebDriverProvider driverProvider;
     @Inject
     ScreenshotUtils screenshotUtils;
     @Inject
-    ScenarioContext scenarioContext;
-    @Inject
     GooglePageObjects pageObjects;
 
     WebDriverWait wait;
-
     String googleurl = AppConfigHolder.getInstance().googleurl();
 
     @PostConstruct
@@ -41,7 +41,7 @@ public class GooglePageActions {
 
     public void search(final String keyword) {
         pageObjects.searchBox.sendKeys(keyword);
-        screenshotUtils.insertScreenshot1(scenarioContext.getScenario(), "screenshot");
+        screenshotUtils.insertScreenshot("screenshot");
         pageObjects.searchBox.sendKeys(Keys.TAB);
         pageObjects.searchBtns
                 .stream()

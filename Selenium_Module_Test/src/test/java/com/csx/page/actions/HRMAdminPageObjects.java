@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Singleton;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-@ApplicationScoped
+@Singleton
 public class HRMAdminPageObjects {
     @FindBy(id = "menu_admin_viewAdminModule")
     WebElement admin_link;
